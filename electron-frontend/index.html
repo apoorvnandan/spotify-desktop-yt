@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Spotify Desktop</title>
+    <meta http-equiv="Content-Security-Policy"
+        content="script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdn.jsdelivr.net;" />
+    <script src="https://cdn.jsdelivr.net/npm/@unocss/runtime/uno.global.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@unocss/reset/tailwind.min.css">
+    <style>
+        :root {
+            color-scheme: dark;
+        }
+
+        #draggable {
+            -webkit-app-region: drag;
+        }
+    </style>
+</head>
+
+<body class="bg-neutral-800 w-full h-screen flex overflow-y-auto">
+    <div id="draggable" class="absolute top-0 left-0 w-full h-6"></div>
+    <div class="w-1/4 pt-8 pl-2">
+        <div class="p-2 text-neutral-400 hover:text-neutral-300 cursor-pointer">
+            <p>Home</p>
+        </div>
+        <div class="pt-2 mt-4">
+            <p class="px-2 text-sm text-neutral-500">PLAYLISTS</p>
+        </div>
+        <div id="sidebar-playlists" class="mt-4"></div>
+    </div>
+    <div class="w-3/4 flex flex-col h-screen overflow-y-auto">
+        <img id="playlist-cover" class="object-cover w-full h-60 grow-0 shrink-0 bg-red-100">
+        </img>
+        <div id="song-list" class="w-full bg-neutral-900 grow pb-20"></div>
+    </div>
+    <div id="player"
+        class="absolute text-neutral-400 bottom-0 right-0 w-3/4 h-20 bg-neutral-900 flex px-6 items-center justify-between">
+    </div>
+    <audio id="audio" class="w-0 h-0"></audio>
+    <script type="module" src="state.js"></script>
+    <script type="module" src="app.js"></script>
+</body>
+
+</html>
